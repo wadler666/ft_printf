@@ -6,7 +6,7 @@
 /*   By: bahbibe <bahbibe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 09:37:44 by bahbibe           #+#    #+#             */
-/*   Updated: 2022/11/05 04:34:04 by bahbibe          ###   ########.fr       */
+/*   Updated: 2022/11/05 04:44:49 by bahbibe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,22 @@ int	ft_printf(const char *str, ...)
 	}
 	va_end(args);
 	return (ret);
+}
+int	main()
+{
+	int	n = 20;
+	int	*p = &n;
+	char	*s = "%%\nMy name is: %s(%c)\nI'm %d or %i\nor in hex %x/%X\nthe pointer to it is %p\nthe unsigned %u\n";
+	int	fttotal = ft_printf(s, "Bob", 'M', n, n, n + 43, n + 43, p, 4294967295);
+	ft_printf("\n");
+	int	systotal = printf(s, "Bob", 'M', n, n, n + 43, n + 43, p, 4294967295);
+	ft_printf("\n");
+	printf("Total sys printf: %d, total ft_printf: %d\n", systotal, fttotal);
+	
+	s = "%%x with -1[%x]\n";
+	int n1 = ft_printf(s, -1);
+	int n2 = printf(s, -1);
+	printf("ft_printf: [%d] | printf: [%d]\n", n1, n2);
+
+	return 0;
 }
