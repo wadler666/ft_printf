@@ -6,7 +6,7 @@
 /*   By: bahbibe <bahbibe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 09:37:44 by bahbibe           #+#    #+#             */
-/*   Updated: 2022/11/04 09:36:10 by bahbibe          ###   ########.fr       */
+/*   Updated: 2022/11/05 04:34:04 by bahbibe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,12 @@ int	ft_printf(const char *str, ...)
 	i = 0;
 	ret = 0;
 	while (str[i])
-	{
+	{		
 		if (str[i] == '%')
 		{
 			i++;
+			if (str[i] == '\0')
+				continue ;
 			ft_formats(args, str[i], &ret);
 		}
 		else
